@@ -1,0 +1,86 @@
+<div class="pagenav">
+ <%= link_to 'Get Weight HTM', siteHTM_weights_path(:selected_weight_litter_filter=>params[:selected_weight_litter_filter],
+                                                     :selected_weight_puppy_filter=>params[:selected_weight_puppy_filter] ) %>
+</div>
+
+<h1>Puppy weights</h1>
+
+<% if !params[:selected_weight_puppy_filter].blank? %>
+  <div class="sidebar round floatRightContent">
+    <%= form_for(@weight) do |f| %>
+      <% if !notice.blank? %>
+        <div><%= notice %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.hidden_field :puppy_id %>
+
+        <%= f.label :date %>:
+        <%= f.date_select :date, :order => [:day, :month, :year], :use_short_month=>true %>
+        <br>
+        <%= f.label :lb %>:
+        <%= f.text_field :lb, :size => 3 %>
+
+        <%= f.label :oz %>:
+        <%= f.text_field :oz,:size => 2 %>
+
+        <%= hidden_field_tag :selected_weight_litter_filter, params[:selected_weight_litter_filter]  %>
+        <%= hidden_field_tag :selected_weight_puppy_filter, params[:selected_weight_puppy_filter] %>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_tag weights_path, :method => :get do %>
+    <h5>Filter by Litter  -
+       <%= select_tag(:selected_weight_litter_filter, 
+                      (options_from_collection_for_select(@litters, :id, :name, params[:selected_weight_litter_filter])).html_safe,
+                      {:onchange => "this.form.submit()"} ) %>
+<% end %>
+<%= form_tag weights_path, :method => :get do %>
+       <%= hidden_field_tag :selected_weight_litter_filter, params[:selected_weight_litter_filter] %>
+       Filter by Puppy  -
+       <%= select_tag(:selected_weight_puppy_filter, 
+                      ("<option value="">All</option>" + 
+                      options_from_collection_for_select(@puppies, :id, :name, params[:selected_weight_puppy_filter])).html_safe,
+                      {:onchange => "this.form.submit()"} ) %>
+    </h5>
+<% end %>
+
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Age</th>
+    <th>Puppy</th>
+    <th>Lb</th>
+    <th>Oz</th>    
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @weights.each do |weight| %>
+  <tr>
+    <td><%= weight.date %> </td>
+    <td><%= format_age weight.age_sec %> </td>
+    <td><%= link_to weight.puppy.name_with_collar_color_and_litter, weight.puppy %></td>
+    <td><%= weight.lb %></td>
+    <td><%= weight.oz %></td>    
+    <td><%= link_to 'Edit', edit_weight_path(weight,:selected_weight_litter_filter => params[:selected_weight_litter_filter],
+                                                    :selected_weight_puppy_filter => params[:selected_weight_puppy_filter]) %></td>
+    <td><%= link_to 'Destroy', weight_path(weight,:selected_weight_litter_filter=>params[:selected_weight_litter_filter],
+                                                  :selected_weight_puppy_filter => params[:selected_weight_puppy_filter]),
+                               :confirm => 'Are you sure?',
+                               :method => :delete %></td>
+
+
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,61 @@
+<%= form_tag 'update' do -%>
+  <%= hidden_field_tag :current_client_id, @current_client.id %>
+  <%= hidden_field_tag :current_puppy_id, @puppy.id %>
+
+  <% if @puppy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@puppy.errors.count, "error") %> prohibited this puppy from being saved:</h2>
+
+      <ul>
+      <% @puppy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag 'litter_id' %><br />
+    <%= @puppy.litter.try(:name) %>
+  </div>
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= text_field :puppy, :name %>
+  </div>
+  <div class="field">
+    <%= label_tag :gender_id %><br />
+    <%= @puppy.gender.try(:gender) %>
+  </div>
+  <div class="field">
+    <%= label_tag :color_id %><br />
+    <%= @puppy.color.try(:color) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :collar_color_name %><br />
+    <%= text_field :puppy,:collar_color_name %>
+  </div>
+  <div class="field">
+    <%= label_tag :client_id %><br />
+        <%= collection_select(:puppy,
+                          :client_id,
+                          @clients,
+                          :id,
+                          :full_name,
+                          :include_blank => true) %>
+  </div>
+ <div class="field">
+    <%= label_tag :date_sold %><br />
+    <%= date_select :puppy,:date_sold, :include_blank => true,
+                                       :default => nil,
+                                       :order => [:day, :month, :year],
+                                       :use_short_month=>true %>
+  </div>
+  <div class="field">
+    <%= label_tag :notes %><br />
+    <%= text_area :puppy,:notes %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'update' %>
+  </div>
+<% end -%>

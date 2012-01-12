@@ -1,0 +1,31 @@
+<h1>Listing charges</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Charge type</th>
+    <th>Puppy</th>
+    <th>Client</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @charges.each do |charge| %>
+  <tr>
+    <td><%= charge.date %></td>
+    <td><%= number_to_currency charge.amount %></td>
+    <td><%= charge.charge_type_id %></td>
+    <td><%= charge.puppy_id %></td>
+    <td><%= charge.client_id %></td>
+    <td><%= link_to 'Show', charge %></td>
+    <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
+    <td><%= link_to 'Destroy', charge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Charge', new_charge_path %>

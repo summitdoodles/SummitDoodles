@@ -1,0 +1,22 @@
+<div class="pagenav">
+  <%= link_to 'Back', weights_path(:selected_weight_litter_filter=>params[:selected_weight_litter_filter],
+                                   :selected_weight_puppy_filter=>params[:selected_weight_puppy_filter] ) %>
+</div>
+
+<h1>Weight HTM</h1>
+    <h5>Filter by Litter  -
+       <%= select_tag(:selected_weight_litter_filter, 
+                      (options_from_collection_for_select(@litters, :id, :name, params[:selected_weight_litter_filter])).html_safe,
+                      {:disabled => "disabled"} ) %>
+
+       <br>Filter by Puppy  -
+       <%= select_tag(:selected_weight_puppy_filter, 
+                      ("<option value="">All</option>" + 
+                      options_from_collection_for_select(@puppies, :id, :name, params[:selected_weight_puppy_filter])).html_safe,
+                      {:disabled => "disabled"} ) %>
+    </h5>
+
+    
+<!--<a href="#" onclick="alert('test');copyToClipboard('<%= h @weight_htm -%>'); return false;">Copy to clipboard</a>-->
+  <br>	
+  <%= text_area_tag 'weight_htm', @weight_htm %>

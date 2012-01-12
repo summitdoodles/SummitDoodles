@@ -1,0 +1,18 @@
+http://gitref.org/basic/
+http://help.github.com/
+
+Everything done in 'Git Bash'
+
+--commit
+git add .
+git commit -m 'Notes about commit'
+git push github master
+
+--Setup remotes:
+github-SummitDoodles
+origin-summitdoodles.com
+
+
+--change remote from one to anther
+git remote set-url origin git://new.url.here
+

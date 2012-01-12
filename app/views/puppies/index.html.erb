@@ -1,0 +1,51 @@
+<div class="pagenav">
+  <%= link_to 'New Puppy', new_puppy_path %>
+</div>
+
+<h1>Listing puppies</h1>
+
+<%= form_tag puppies_path, :method => :get do %>
+    <h5>Filter by Litter  -
+
+       <%= select_tag(:selected_litter_filter, 
+                      ("<option value="">All</option>" + 
+                      options_from_collection_for_select(@litters, :id, :name, params[:selected_litter_filter])).html_safe,
+                      {:onchange => "this.form.submit()"} ) %>
+    </h5>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Color</th>
+    <th>Litter</th>
+    <th>Owner</th>
+    <th>Date sold</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @puppies.each do |puppy| %>
+  <tr>
+    <td><%= link_to puppy.name_with_collar_color, puppy %></td>    
+    <td><%= puppy.gender.try(:gender) %></td>
+    <td><%= puppy.color.color %></td>    
+    <td><%= puppy.litter.try(:name) %></td>
+
+     <%- unless puppy.client.blank? %>
+       <td><%= link_to puppy.client.try(:full_name),puppy.client %> </td>
+     <%- else %>
+       <td></td>
+     <%- end %>
+
+    <td><%= puppy.date_sold %></td>
+    <td><%= link_to 'Edit', edit_puppy_path(puppy) %></td>
+    <td><%= link_to 'Destroy', puppy, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,37 @@
+<div class="pagenav">
+    <%= link_to 'Edit', edit_client_charge_path(@client, @charge) %> |
+    <%= link_to 'Back', @client %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @charge.date %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= number_to_currency @charge.amount %>
+</p>
+
+<p>
+  <b>Charge type:</b>
+  <%= @charge.charge_type.try(:name) %>
+</p>
+
+<p>
+  <b>Puppy:</b>
+  <%= @charge.puppy.try(:name_with_collar_color_and_litter) %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @charge.client.try(:full_name) %>
+</p>
+
+<p>
+  <b>Notes:</b>  <br>
+  <%= text_area_tag :notes_text, @charge.notes, :disabled => true %>
+</p>
+

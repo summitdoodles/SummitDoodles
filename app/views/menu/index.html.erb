@@ -1,0 +1,44 @@
+<h1>Menu</h1>
+<p id="notice"><%= notice %></p>
+
+<%= link_to "View/Add Sires", sires_path %>
+<br>
+<%= link_to "View/Add Dames", dames_path %>
+<br>
+<%= link_to "View/Add Heat Cycles", heat_cycles_path %>
+<br>
+<br>
+<%= link_to "View/Add Litters", litters_path %>
+<br>
+<%= link_to "View/Add Puppies", puppies_path %>
+<br>
+<%= link_to "View/Add Puppy Weights", weights_path %>
+<br>
+<br>
+<%= link_to "View/Add Clients", clients_path %>
+<br>
+<br>
+<%= link_to "View/Add Expense", expenses_path %>
+<br><br>
+
+REPORTS<br>
+<%= link_to "Email Lists", 'email_list/index' %>
+<br>
+<%= link_to "Expense", h( '/reports/expense?' + {:expense_report_group_filter_selection=>'Litter',
+                                                 :expense_report_year_filter_selection=>'all'}.to_query) %>
+<br>
+<%= link_to "Weight Report", weight_reports_path %>
+
+
+<br><br>
+<%= link_to "Add new State", states_path %>
+<br>
+<%= link_to "Add new Email Priority", email_priorities_path %>
+<br>
+<%= link_to "Add new Breed", breeds_path %>
+<br>
+<%= link_to "Add new Charge Type", charge_types_path %>
+<br>
+<%= link_to "Add new Puppy Color", colors_path %>
+
+

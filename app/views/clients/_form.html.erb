@@ -1,0 +1,95 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <th><%= f.label :first_name %></th>
+      <td><%= f.text_field :first_name %></td>
+      <th><%= f.label :last_name %></th>
+      <td><%= f.text_field :last_name %></td>
+      <th></th>
+      <td></td>      
+    </tr>
+    <tr>
+      <th><%= f.label :address_1 %></th>
+      <td><%= f.text_field :address_1 %></td>
+      <th><%= f.label :address_2 %></th>
+      <td><%= f.text_field :address_2 %></td>
+      <th></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th><%= f.label :city %></th>
+      <td><%= f.text_field :city %></td>
+      <th><%= f.label :state_id %></th>
+      <td><%= collection_select(:client,
+                          :state_id,
+                          @states,
+                          :id,
+                          :short_name,
+                          {:include_blank => true} ) %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.label :zip %>&nbsp;&nbsp;<%= f.text_field :zip, :size => 11 %>
+          
+      </td>
+      <th></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th><%= f.label :email %></th>
+      <td><%= f.text_field :email %></td>
+      <th><%= f.label :email_priority %></th>
+      <td><%= f.collection_select(:email_priority,
+                                  @email_priorities,
+                                  :id,
+                                  :name ) %></td>
+      <th></th>
+      <td></td>
+    </tr>
+    <tr>      
+      <th><%= f.label :phone_number %></th>
+      <td><%= f.text_field :phone_number %></td>
+      <th><%= label_tag '2nd phone number' %></th>
+      <td><%= f.text_field :secondary_phone_number %></td>
+      <th></th>
+      <td></td>
+    </tr>
+    <tr>
+      <th><%= f.label :gender_id %></th>
+      <td><%= collection_select(:client,
+                          :gender_id,
+                          @genders,
+                          :id,
+                          :gender ) %></td>      
+      <th><%= f.label :do_not_email %></th>
+      <td><%= f.check_box :do_not_email %></td>
+      <th></th>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <br>
+  <%= f.label :notes %><br />
+  <%= f.text_area :notes %>
+  <br>
+  
+  <%= label_tag 'Reference Text' %> - <%= label_tag 'Willing to be a referral' %> - <%= f.check_box :will_be_referal %><br />
+  <%= f.text_area :reference %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: weights
+#
+#  id         :integer         not null, primary key
+#  date       :date
+#  lb         :integer
+#  oz         :integer
+#  puppy_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-08-25
+  lb: 1
+  oz: 1
+  puppy_id: 1
+
+two:
+  date: 2011-08-25
+  lb: 1
+  oz: 1
+  puppy_id: 1

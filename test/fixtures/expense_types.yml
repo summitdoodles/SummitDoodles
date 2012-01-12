@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: expense_types
+#
+#  id                  :integer         not null, primary key
+#  name                :string(255)
+#  expense_tax_type_id :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  expense_tax_type_id: 1
+
+two:
+  name: MyString
+  expense_tax_type_id: 1

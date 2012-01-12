@@ -1,0 +1,32 @@
+<div class="pagenav">
+ <%= link_to 'New Dame', new_dame_path %>
+</div>
+
+<h1>Listing dames</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Birthday</th>
+    <th>Active</th>
+    <th>Breed</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dames.each do |dame| %>
+
+  <tr>
+    <td><%= dame.name %></td>
+    <td><%= dame.birthday %></td>
+    <td><%= dame.active %></td>
+    <td><%= dame.breed.name %></td>
+    <td><%= link_to 'Edit', edit_dame_path(dame) %></td>
+    <td><%= link_to 'Destroy', dame, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

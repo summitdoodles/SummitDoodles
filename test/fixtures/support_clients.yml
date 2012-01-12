@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: support_clients
+#
+#  id          :integer         not null, primary key
+#  first_name  :string(255)
+#  last_name   :string(255)
+#  phone       :string(255)
+#  email       :string(255)
+#  relation_id :integer
+#  client_id   :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  relation_id: 1
+  client_id: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  email: MyString
+  relation_id: 1
+  client_id: 1

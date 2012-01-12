@@ -1,0 +1,38 @@
+<div class="pagenav">
+  <%= link_to 'New Heat cycle', new_heat_cycle_path %>
+</div>
+
+<h1>Listing Heat Cycles</h1>
+
+<%= form_tag heat_cycles_path, :method => :get do %>
+    <h5>Filter by Dame  -        
+       <%= select_tag(:selected_dame_filter, 
+                      ("<option value="">All</option>" + 
+                      options_from_collection_for_select(@dames, :id, :name, params[:selected_dame_filter])).html_safe,
+                      {:onchange => "this.form.submit()"} ) %>
+    </h5>
+<% end %>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Dame</th>
+    <th>In heat</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @heat_cycles.each do |heat_cycle| %>
+  <tr>
+    <td><%= heat_cycle.date %></td>
+    <td><%= heat_cycle.dame.name %></td>
+    <td><%= heat_cycle.in_heat %></td>
+    <td><%= link_to 'Edit', edit_heat_cycle_path(heat_cycle) %></td>
+    <td><%= link_to 'Destroy', heat_cycle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

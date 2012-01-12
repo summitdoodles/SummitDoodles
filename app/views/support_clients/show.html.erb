@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @support_client.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @support_client.last_name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @support_client.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @support_client.email %>
+</p>
+
+<p>
+  <b>Relation:</b>
+  <%= @support_client.relation.try(:relation) %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @support_client.client.try(:full_name) %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_support_client_path(@client,@support_client) %> |
+<%= link_to 'Back', @client %>

@@ -1,0 +1,58 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id                     :integer         not null, primary key
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  address_1              :string(255)
+#  address_2              :string(255)
+#  city                   :string(255)
+#  state_id               :integer
+#  zip                    :string(255)
+#  email                  :string(255)
+#  phone_number           :string(255)
+#  secondary_phone_number :string(255)
+#  gender_id              :integer
+#  will_be_referal        :boolean         default(FALSE)
+#  reference              :text
+#  notes                  :text
+#  email_priority_id      :integer
+#  do_not_email           :boolean         default(FALSE)
+#  created_at             :datetime
+#  updated_at             :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  address_1: MyString
+  address_2: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  email: MyString
+  phone_number: MyString
+  secondary_phone_number: MyString
+  gender_id: 1
+  will_be_referal: false
+  reference: MyText
+  notes: MyText
+
+two:
+  first_name: MyString
+  last_name: MyString
+  address_1: MyString
+  address_2: MyString
+  city: MyString
+  state_id: 1
+  zip: MyString
+  email: MyString
+  phone_number: MyString
+  secondary_phone_number: MyString
+  gender_id: 1
+  will_be_referal: false
+  reference: MyText
+  notes: MyText

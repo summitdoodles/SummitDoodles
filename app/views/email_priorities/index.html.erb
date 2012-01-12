@@ -1,0 +1,25 @@
+<div class="pagenav">
+  <%= link_to 'New Email priority', new_email_priority_path %>
+</div>
+
+<h1>Listing email_priorities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @email_priorities.each do |email_priority| %>
+  <tr>
+    <td><%= email_priority.name %></td>
+    <td><%= link_to 'Edit', edit_email_priority_path(email_priority) %></td>
+    <td><%= link_to 'Destroy', email_priority, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

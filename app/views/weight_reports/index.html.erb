@@ -1,0 +1,54 @@
+<div class="pagenav">
+
+</div>
+
+<h1>Puppy Weight Report</h1>
+    <h5>
+      <%= form_tag weight_reports_path, :method => :get do %>
+        Filter by:&nbsp;&nbsp;
+        <%= select_tag :weight_report_filter_type,
+                               options_for_select(@filter_choices,params[:weight_report_filter_type]),
+                               {:onchange => "this.form.submit()"} %>
+      <% end %>
+
+      <% if !@filter.nil?  %>
+        <%= form_tag weight_reports_path, :method => :get do %>
+              <%= hidden_field_tag :weight_report_filter_type,params[:weight_report_filter_type]  %>
+              Filter:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= select_tag :weight_report_filter,
+                               options_from_collection_for_select(@filter,'id','name',params[:weight_report_filter]),
+                               {:onchange => "this.form.submit()"} %>
+        <% end %>
+      <% end %>
+    </h5>
+
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Weight</th>
+    <th>Gender</th>
+    <th>Color</th>
+    <th>Litter</th>
+  </tr>
+
+<% @puppies.each do |puppy| %>
+  <tr>
+    <% if !puppy.newest_weight.nil? %>
+
+      <td><%= link_to puppy.name_with_collar_color, weight_report_path(puppy) %></td>
+      <td><%= format_age puppy.newest_weight.age_sec %></td>
+      <td><%= format_weight(puppy.newest_weight.lb,puppy.newest_weight.oz) %></td>
+      <td><%= puppy.gender.try(:gender) %></td>
+      <td><%= puppy.color.color %></td>
+      <td><%= puppy.litter.try(:name) %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

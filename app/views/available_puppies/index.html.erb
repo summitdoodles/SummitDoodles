@@ -1,0 +1,35 @@
+<div class="pagenav">
+  <%= link_to 'back', client_path(@current_client) %>
+</div>
+
+<h1>Available puppies</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Color</th>
+    <th>Litter</th>
+    <th></th>
+  </tr>
+
+<% @puppies.each do |puppy| %>
+  <tr>
+    <td><%= puppy.name_with_collar_color %></td>
+    <td><%= puppy.gender.try(:gender) %></td>
+    <td><%= puppy.color.color %></td>    
+    <td><%= puppy.litter.try(:name) %></td>
+    <td>
+        <%= form_tag "/available_puppies/assign_puppy", :method => :get do %>
+            <%= hidden_field_tag "current_client_id", @current_client.id %>
+            <%= hidden_field_tag "current_puppy_id", puppy.id %>
+            <%= submit_tag 'Add' %>
+        <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

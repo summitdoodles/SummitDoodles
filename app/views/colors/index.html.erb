@@ -1,0 +1,24 @@
+<div class="pagenav">
+  <%= link_to 'New Color', new_color_path %>
+</div>
+<h1>Listing colors</h1>
+
+<table>
+  <tr>
+    <th>Color</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @colors.each do |color| %>
+  <tr>
+    <td><%= color.color %></td>
+    <td><%= link_to 'Edit', edit_color_path(color) %></td>
+    <td><%= link_to 'Destroy', color, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

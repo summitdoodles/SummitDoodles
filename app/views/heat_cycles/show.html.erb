@@ -1,0 +1,24 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_heat_cycle_path(@heat_cycle) %> |
+<%= link_to 'Back', heat_cycles_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @heat_cycle.date %>
+</p>
+
+<p>
+  <b>Sire:</b>
+  <%= @heat_cycle.sire_id %>
+</p>
+
+<p>
+  <b>In heat:</b>
+  <%= @heat_cycle.in_heat %>
+</p>
+
+
+

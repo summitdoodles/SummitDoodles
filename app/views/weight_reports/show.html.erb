@@ -1,0 +1,26 @@
+<div class="pagenav">
+  <%= link_to 'Back', weight_reports_path %>
+</div>
+
+<h1>Weight Report - weights for <%= link_to @puppy.name_with_collar_color_and_litter, @puppy %></h1>
+<br>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Age</th>
+    <th>Weight</th>
+  </tr>
+
+<% @weights.each do |weight| %>
+  <tr>
+    <td><%= weight.date %> </td>
+    <td><%= format_age weight.age_sec %> </td>
+    <td><%= format_weight( weight.lb, weight.oz ) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

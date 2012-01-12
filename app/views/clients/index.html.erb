@@ -1,0 +1,46 @@
+<div class="pagenav">
+  <%= link_to 'Add New Client', new_client_path %>
+</div>
+
+<h1>Listing clients</h1>
+
+<%= form_tag clients_path, :method => :get do %>
+    <h5>
+        <%= select_tag :client_filter_selection, 
+                       options_for_select(@filter_choices,params[:client_filter_selection])%>
+           
+        <%= text_field_tag 'client_filter_text',params[:client_filter_text] %>
+        
+        <%= submit_tag 'Search' %>
+    </h5>
+<% end %>
+
+<br>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone number</th>
+    <th>2nd phone number</th>
+    <th>Gender</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clients.each do |client| %>
+  <tr>
+    <td><%= link_to client.full_name, client %></td> 
+    <td><%= client.email %></td>
+    <td><%= client.phone_number %></td>
+    <td><%= client.secondary_phone_number %></td>
+    <td><%= client.gender.try(:gender) %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

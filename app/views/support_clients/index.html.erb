@@ -1,0 +1,31 @@
+<h1>Listing support_clients</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Relation</th>
+    <th>Client</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @support_clients.each do |support_client| %>
+  <tr>
+    <td><%= support_client.first_name %></td>
+    <td><%= support_client.last_name %></td>
+    <td><%= support_client.phone %></td>
+    <td><%= support_client.email %></td>
+    <td><%= support_client.relation.try(:relation) %></td>
+    <td><%= support_client.client.try(:full_name) %></td>
+    <td><%= link_to 'Edit', edit_client_support_client_path(support_client.client, support_client) %></td>
+    <td><%= link_to 'Destroy', client_support_client_path(support_client.client, support_client), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Support client', new_client_support_client_path(@client) %>

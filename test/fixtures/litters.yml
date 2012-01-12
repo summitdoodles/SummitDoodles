@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: litters
+#
+#  id         :integer         not null, primary key
+#  birthday   :date
+#  sire_id    :integer
+#  dame_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  birthday: 2011-08-30
+  sire_id: 1
+  dame_id: 1
+
+two:
+  birthday: 2011-08-30
+  sire_id: 1
+  dame_id: 1

@@ -1,0 +1,28 @@
+<h1>Email Lists</h1>
+<h5>Return all client email addresses that:</h5>
+<%= form_tag '/email_list/index', :method => :get do %>
+	
+	<%= label_tag "Email priority filter: " %>
+	<%= collection_select(:email_list_filter,
+						  :email_priority_id,
+						  @email_priority,
+						  :id,
+						  :name,
+						  {:include_blank => 'All priorities'} ) %>
+	<br><br>
+	<%= label_tag "Own Puppy filter: " %>
+	
+	<%= select(:email_list_filter,
+			   :email_own_puppy,
+			   {"Yes, own a puppy"=>"yes", "No, do not own a puppy"=>"no"},				
+			   {:include_blank => 'All'} ) %>
+	<br><br>
+	<%= submit_tag 'Search' %>	
+<% end %>
+<br>
+	<a href="#" onclick="copyToClipboard('<%= h @email_list -%>'); return false;">Copy to clipboard</a>
+	<br>	
+	<%= text_area_tag 'email_list', @email_list %>
+	
+
+

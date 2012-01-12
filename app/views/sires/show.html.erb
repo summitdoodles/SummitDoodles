@@ -1,0 +1,29 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_sire_path(@sire) %> |
+<%= link_to 'Back', sires_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sire.name %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @sire.birthday %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @sire.active %>
+</p>
+
+<p>
+  <b>Breed:</b>
+  <%= @sire.breed_id %>
+</p>
+
+
+

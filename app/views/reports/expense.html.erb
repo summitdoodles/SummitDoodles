@@ -1,0 +1,24 @@
+
+<h1>Expense Report:</h1>
+
+<%= form_tag '/reports/expense', :method => :get do %>
+    <h5>
+    	Group by:
+        <%= select_tag :expense_report_group_filter_selection, 
+                       options_for_select(@group_filter_choices,params[:expense_report_group_filter_selection])%>
+        <br>
+        Timeframe:               
+        <%= select_tag :expense_report_year_filter_selection, 
+                       options_for_select(@date_filter_choices,params[:expense_report_year_filter_selection])%>
+        <br>   
+        <%= submit_tag 'Search' %>
+    </h5>
+<% end %>
+
+  
+<%= @report_htm.html_safe  %>
+  
+  
+
+
+

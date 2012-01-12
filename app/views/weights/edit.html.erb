@@ -1,0 +1,10 @@
+<div class="pagenav">
+<%= link_to 'Back', weights_path(:selected_weight_litter_filter => params[:selected_weight_litter_filter],
+                                 :selected_weight_puppy_filter => params[:selected_weight_puppy_filter]) %>
+</div>
+
+<h1>Editing weight</h1>
+
+<%= render 'form' %>
+
+

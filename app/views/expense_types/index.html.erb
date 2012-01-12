@@ -1,0 +1,29 @@
+<div class="pagenav">
+  <%= link_to 'Back to expense', expenses_path %>
+  <br><br>
+  <%= link_to 'New Expense type', new_expense_type_path %>
+</div>
+
+<h1>Listing expense_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Expense tax type</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @expense_types.each do |expense_type| %>
+  <tr>
+    <td><%= expense_type.name %></td>
+    <td><%= expense_type.expense_tax_type.try(:name) %></td>
+    <td><%= link_to 'Edit', edit_expense_type_path(expense_type) %></td>
+    <td><%= link_to 'Destroy', expense_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

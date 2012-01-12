@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: relations
+#
+#  id         :integer         not null, primary key
+#  relation   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  relation: MyString
+
+two:
+  relation: MyString

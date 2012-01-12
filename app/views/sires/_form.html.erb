@@ -1,0 +1,37 @@
+<%= form_for(@sire) do |f| %>
+  <% if @sire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sire.errors.count, "error") %> prohibited this sire from being saved:</h2>
+
+      <ul>
+      <% @sire.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :breed_id %><br />
+    <%= collection_select(:sire, 
+                          :breed_id, 
+                          @breeds, 
+                          :id, 
+                          :name ) %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, :order => [:day, :month, :year], :use_short_month=>true %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

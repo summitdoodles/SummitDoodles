@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: heat_cycles
+#
+#  id         :integer         not null, primary key
+#  date       :date
+#  dame_id    :integer
+#  in_heat    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-08-30
+  sire_id: 1
+  in_heat: MyString
+
+two:
+  date: 2011-08-30
+  sire_id: 1
+  in_heat: MyString

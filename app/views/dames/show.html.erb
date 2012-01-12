@@ -1,0 +1,29 @@
+<div class="pagenav">
+ <%= link_to 'Edit', edit_dame_path(@dame) %> |
+<%= link_to 'Back', dames_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dame.name %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @dame.birthday %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @dame.active %>
+</p>
+
+<p>
+  <b>Breed:</b>
+  <%= @dame.breed_id %>
+</p>
+
+
+

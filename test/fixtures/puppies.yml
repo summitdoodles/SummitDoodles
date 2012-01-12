@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: puppies
+#
+#  id                :integer         not null, primary key
+#  name              :string(255)
+#  gender_id         :integer
+#  color_id          :integer
+#  date_sold         :date
+#  litter_id         :integer
+#  collar_color_name :string(255)
+#  client_id         :integer
+#  notes             :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  gender_id: 1
+  color_id: 1
+  date_sold: 2011-08-25
+  litter_id: 1
+  collar_color_name: MyString
+  client_id: 1
+  notes: MyString
+
+two:
+  name: MyString
+  gender_id: 1
+  color_id: 1
+  date_sold: 2011-08-25
+  litter_id: 1
+  collar_color_name: MyString
+  client_id: 1
+  notes: MyString

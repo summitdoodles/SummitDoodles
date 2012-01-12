@@ -1,0 +1,19 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_expense_type_path(@expense_type) %> |
+<%= link_to 'Back', expense_types_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @expense_type.name %>
+</p>
+
+<p>
+  <b>Expense tax type:</b>
+  <%= @expense_type.expense_tax_type_id %>
+</p>
+
+
+

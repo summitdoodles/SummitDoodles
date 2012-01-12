@@ -1,0 +1,38 @@
+<%= form_for([@client,@support_client]) do |f| %>
+  <% if @support_client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@support_client.errors.count, "error") %> prohibited this support_client from being saved:</h2>
+
+      <ul>
+      <% @support_client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :relation_id %><br />
+    <%= f.collection_select :relation_id, @relations,:id,:relation %>
+    <%= link_to 'Add new relation', relations_path %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

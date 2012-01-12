@@ -1,0 +1,53 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+
+.bundle
+*.sqlite3*
+*.log
+/tmp/
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea/*
+
+config/initializers/secret_token.rb
+config/database.yml
+
+todo.txt
+deploymentNotes.txt
+db/notes.txt

@@ -1,0 +1,29 @@
+<div class="pagenav">
+  <%= link_to 'New Litter', new_litter_path %>
+</div>
+
+<h1>Listing litters</h1>
+
+<table>
+  <tr>
+    <th>Birthday</th>
+    <th>Sire</th>
+    <th>Dame</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @litters.each do |litter| %>
+  <tr>
+    <td><%= litter.birthday %></td>
+    <td><%= litter.sire.name %></td>
+    <td><%= litter.dame.name %></td>
+    <td><%= link_to 'Edit', edit_litter_path(litter) %></td>
+    <td><%= link_to 'Destroy', litter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

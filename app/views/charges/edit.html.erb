@@ -1,0 +1,10 @@
+<div class="pagenav">
+    <%= link_to 'Show', client_charge_path( @client, @charge ) %> |
+    <%= link_to 'Back', @client %>
+</div>
+
+<h1>Editing charge for <%= @client.full_name %></h1>
+
+<%= render 'form' %>
+
+

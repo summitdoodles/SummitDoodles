@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: expenses
+#
+#  id              :integer         not null, primary key
+#  expense_type_id :integer
+#  name            :string(255)
+#  amount          :decimal(8, 2)
+#  date            :date
+#  litter_id       :integer
+#  notes           :text
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  expense_type_id: 1
+  name: MyString
+  amount: 9.99
+  date: 2011-09-01
+  litter_id: 1
+  notes: MyText
+
+two:
+  expense_type_id: 1
+  name: MyString
+  amount: 9.99
+  date: 2011-09-01
+  litter_id: 1
+  notes: MyText

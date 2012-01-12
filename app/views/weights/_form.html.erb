@@ -1,0 +1,36 @@
+<%= form_for(@weight) do |f| %>
+  <% if @weight.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weight.errors.count, "error") %> prohibited this weight from being saved:</h2>
+
+      <ul>
+      <% @weight.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p id="notice"><%= notice %></p>
+  <div class="field">
+    <%= f.label :puppy_id %>: 
+     <%=  @weight.puppy.name_with_collar_color_and_litter %>
+  </div>  
+  <div class="field">
+    <%= f.label :date %>:
+    <%= f.date_select :date, :order => [:day, :month, :year], :use_short_month=>true %>
+  </div>
+  <div class="field">
+    <%= f.label :lb %>:
+    <%= f.text_field :lb %>
+  </div>
+  <div class="field">
+    <%= f.label :oz %>:
+    <%= f.text_field :oz %>
+  </div> 
+  <br>
+  <%= hidden_field_tag :selected_weight_litter_filter, params[:selected_weight_litter_filter]  %>
+  <%= hidden_field_tag :selected_weight_puppy_filter, params[:selected_weight_puppy_filter] %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

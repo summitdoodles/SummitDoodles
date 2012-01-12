@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: dames
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  birthday   :date
+#  active     :boolean         default(FALSE)
+#  breed_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  birthday: 2011-08-30
+  active: false
+  breed_id: 1
+  heat_cycle_id: 1
+
+two:
+  name: MyString
+  birthday: 2011-08-30
+  active: false
+  breed_id: 1
+  heat_cycle_id: 1

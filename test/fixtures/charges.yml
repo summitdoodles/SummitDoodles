@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: charges
+#
+#  id             :integer         not null, primary key
+#  date           :date
+#  amount         :decimal(8, 2)
+#  charge_type_id :integer
+#  puppy_id       :integer
+#  client_id      :integer
+#  notes          :text
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-09-10
+  amount: 9.99
+  charge_type_id: 1
+  puppy_id: 1
+  client_id: 1
+
+two:
+  date: 2011-09-10
+  amount: 9.99
+  charge_type_id: 1
+  puppy_id: 1
+  client_id: 1

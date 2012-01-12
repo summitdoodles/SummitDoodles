@@ -1,0 +1,37 @@
+<%= form_for(@heat_cycle) do |f| %>
+  <% if @heat_cycle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@heat_cycle.errors.count, "error") %> prohibited this heat_cycle from being saved:</h2>
+
+      <ul>
+      <% @heat_cycle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date, :order => [:day, :month, :year], :use_short_month=>true %>
+  </div>
+  <div class="field">
+    <%= f.label :dame_id %><br />
+    <%= collection_select(:heat_cycle, 
+                          :dame_id, 
+                          @dames, 
+                          :id, 
+                          :name ) %>
+  </div>
+  <div class="field">
+    <%= f.label :in_heat %><br />
+    <%= select(:heat_cycle, 
+           :in_heat, 
+           %w{Yes No Maybe}) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

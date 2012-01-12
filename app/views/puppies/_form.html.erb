@@ -1,0 +1,73 @@
+<%= form_for(@puppy) do |f| %>
+  <% if @puppy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@puppy.errors.count, "error") %> prohibited this puppy from being saved:</h2>
+
+      <ul>
+      <% @puppy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :litter_id %><br />
+    <%= collection_select(:puppy,
+                          :litter_id,
+                          @litters,
+                          :id,
+                          :name ) %>
+    <%= link_to "Add new litter", litters_path %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :gender_id %><br />
+    <%= collection_select(:puppy,
+                          :gender_id,
+                          @genders,
+                          :id,
+                          :gender ) %>
+    <%= link_to "Add new gender", genders_path %>
+  </div>
+  <div class="field">
+    <%= f.label :color_id %><br />
+    <%= collection_select(:puppy,
+                          :color_id,
+                          @colors,
+                          :id,
+                          :color ) %>
+    <%= link_to "Add new color", colors_path %>
+  </div>
+
+  <div class="field">
+    <%= f.label :collar_color_name %><br />
+    <%= f.text_field :collar_color_name %>
+  </div>
+  <div class="field">
+    <%= f.label :client_id %><br />
+        <%= collection_select(:puppy,
+                          :client_id,
+                          @clients,
+                          :id,
+                          :full_name,
+                          :include_blank => true) %>
+  </div>
+ <div class="field">
+    <%= f.label :date_sold %><br />
+    <%= f.date_select :date_sold, :include_blank => true,
+                                  :default => nil,
+                                  :order => [:day, :month, :year],
+                                  :use_short_month=>true %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

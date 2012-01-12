@@ -1,0 +1,20 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_state_path(@state) %> |
+<%= link_to 'Back', states_path %>
+</div>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @state.name %>
+</p>
+
+<p>
+  <b>Short name:</b>
+  <%= @state.short_name %>
+</p>
+
+
+

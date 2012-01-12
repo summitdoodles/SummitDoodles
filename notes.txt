@@ -1,0 +1,9 @@
+rails generate scaffold Post name:string title:string content:text
+
+rails generate controller Comments
+
+rails generate model Comment commenter:string body:text oz:integer birth_date:date post:references
+
+bundle install --without production
+
+local mysql db pw is curtis

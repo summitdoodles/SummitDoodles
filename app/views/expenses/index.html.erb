@@ -1,0 +1,34 @@
+<div class="pagenav">
+  <%= link_to 'New Expense', new_expense_path %>
+</div>
+
+<h1>Listing expenses</h1>
+
+<table>
+  <tr>
+    <th>Expense type</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Litter</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @expenses.each do |expense| %>
+  <tr>
+    <td><%= link_to expense.name, expense %></td>
+    <td><%= expense.expense_type.name %></td>
+    <td><%= number_to_currency expense.amount %></td>
+    <td><%= expense.date %></td>
+    <td><%= expense.litter.try(:birthday) %></td>
+    <td><%=  %></td>
+    <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+    <td><%= link_to 'Destroy', expense, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,28 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_client_payment_path(@client, @payment) %> |
+  <%= link_to 'Back', @client %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @payment.date %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= number_to_currency @payment.amount %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @payment.client.try(:full_name) %>
+</p>
+
+<p>
+  <b>Notes:</b>  <br>
+  <%= text_area_tag :notes_text, @payment.notes, :disabled => true %>
+</p>
+
+

@@ -1,0 +1,53 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_puppy_path(@puppy) %> |
+  <%= link_to 'Back', puppies_path %> |
+  <%= link_to 'Add Weights for Puppy', weights_path(:selected_weight_litter_filter=>@puppy.litter,
+                                                    :selected_weight_puppy_filter=>@puppy) %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @puppy.name %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @puppy.gender.try(:gender) %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @puppy.color.try(:color) %>
+</p>
+
+<p>
+  <b>Date sold:</b>
+  <%= @puppy.date_sold %>
+</p>
+
+<p>
+  <b>Litter:</b>
+  <%= @puppy.litter.try(:name) %>
+</p>
+
+<p>
+  <b>Collar color name:</b>
+  <%= @puppy.collar_color_name %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%- unless @puppy.client.blank? %>
+    <%= link_to @puppy.client.try(:full_name),@puppy.client %>
+  <%- end %>
+</p>
+
+<p>
+  <b>Notes:</b><br>
+  <%= text_area_tag :notes_text, @puppy.notes, :disabled => true %>
+</p>
+
+
+

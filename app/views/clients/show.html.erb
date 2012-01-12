@@ -1,0 +1,156 @@
+<div class="pagenav">
+    <%= link_to 'Edit', edit_client_path(@client) %> |
+    <%= link_to 'Back', clients_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<h3><%= @client.full_name %></h3>
+
+<table class="grayBorder">
+  <tr>
+    <td ><b>Email:</b> </td>
+    <td><%= @client.email %></td>
+    <td><b>Phone number:</b> </td>
+    <td><%= @client.phone_number %></td>
+    <td><b>2nd phone number:</b> </td>
+    <td><%= @client.secondary_phone_number %></td>
+  </tr>
+  <tr>
+    <td><b>Address:</b></td>
+    <td colspan="5"><%= @client.address_line_1 %> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= @client.address_line_2 %> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= @client.address_line_3 %></td>
+
+  </tr>
+  <tr>
+    <td><b>Gender:</b>  </td>
+    <td><%= @client.gender.try(:gender) %></td>
+    <td><b>Referral?:</b></td>
+    <td><%= @client.will_be_referal_display %></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><b>Email Priority:</b>  </td>
+    <td><%= @client.email_priority.try(:name) %></td>
+    <td><b>Do not email?:</b></td>
+    <td><%= @client.do_not_email_display %></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+    <!-- Support Person Table -->
+    <table class="sidebar round">
+      <th colspan="4">Support Clients - <%= link_to 'New', new_client_support_client_path(@client) %></th>
+      <tr>
+        <th>Name</th>
+        <th>Relation</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @support_clients.each do |support_client| %>
+      <tr>
+        <td><%= link_to support_client.full_name, client_support_client_path(support_client.client, support_client) %></td>
+        <td><%= support_client.relation.try(:relation) %></td>
+        <td><%= link_to 'Edit', edit_client_support_client_path(support_client.client, support_client) %></td>
+        <td><%= link_to 'Destroy', client_support_client_path(support_client.client, support_client), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+   </table>
+   </td>
+   <td>
+    <!-- Puppies owned by client table -->
+    <table class="sidebar round">
+      <th colspan="5">Owned Puppies -
+    <%= link_to 'Add puppy to client', h('/available_puppies/index?' + {:current_client_id=>@client}.to_query) %></th>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Color</th>
+        <th>Litter</th>
+        <th></th>
+      </tr>
+
+       <% @puppies.each do |puppy| %>
+         <tr>
+           <td><%= link_to puppy.name_with_collar_color, h('/available_puppies/show?' + {:current_client_id=>@client,
+                                                                                         :current_puppy_id=>puppy.id}.to_query) %></td>
+           <td><%= puppy.gender.try(:gender) %></td>
+           <td><%= puppy.color.color %></td>
+           <td><%= puppy.litter.try(:name) %></td>
+           <td><%= link_to 'Edit', h('/available_puppies/edit?' + {:current_client_id=>@client,
+                                                                   :current_puppy_id=>puppy.id}.to_query) %></td>
+         </tr>
+       <% end %>
+    </table>
+    </td>
+  </tr>
+</table>
+
+
+
+<table class="sidebar round">
+  <th colspan="6">Charges -  <%= link_to 'New', new_client_charge_path(@client) %></th>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Charge type</th>
+    <th>Puppy</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @charges.each do |charge| %>
+  <tr>
+    <td><%= link_to charge.date, client_charge_path(charge.client,charge) %></td>
+    <td><%= number_to_currency charge.amount %></td>
+    <td><%= charge.charge_type.try(:name) %></td>
+    <td><%= charge.puppy.try(:name_with_collar_color) %></td>
+    <td><%= link_to 'Edit', edit_client_charge_path(charge.client,charge) %></td>
+    <td><%= link_to 'Destroy', client_charge_path(charge.client,charge), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tr><td colspan="6">Sum of charges - <%=  number_to_currency @charges.sum(&:amount) %></td></tr>
+</table>
+
+<table class="sidebar round">
+  <tr>
+    <th colspan="5">Payments -  <%= link_to 'New', new_client_payment_path(@client) %></th>
+  </tr>
+    <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payments.each do |payment| %>
+  <tr>
+    <td><%= link_to payment.date, client_payment_path(payment.client,payment) %></td>
+    <td><%= number_to_currency payment.amount %></td>
+    <td><%= link_to 'Edit', edit_client_payment_path(payment.client,payment) %></td>
+    <td><%= link_to 'Destroy', client_payment_path(payment.client,payment), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+  <tr><td colspan="5">Sum of payments - <%=  number_to_currency @payments.sum(&:amount) %></td></tr>
+</table>
+
+Total Balance: <%=  number_to_currency (@charges.sum(&:amount) - @payments.sum(&:amount) ) %>
+<br><br>
+<p>
+  <b>Notes:</b><br>
+  <%= text_area_tag :client_notes, @client.notes, :disabled => true %>  
+</p>
+
+<p>
+  <b>Reference Text:</b><br>
+  <%= text_area_tag :client_reference_text, @client.reference, :disabled => true %>  
+  
+</p>
+

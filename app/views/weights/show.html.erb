@@ -1,0 +1,29 @@
+<div class="pagenav">
+  <%= link_to 'Edit', edit_weight_path(@weight) %> |
+<%= link_to 'Back', weights_path %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @weight.date %>
+</p>
+
+<p>
+  <b>Lb:</b>
+  <%= @weight.lb %>
+</p>
+
+<p>
+  <b>Oz:</b>
+  <%= @weight.oz %>
+</p>
+
+<p>
+  <b>Puppy:</b>
+  <%= @weight.puppy_id %>
+</p>
+
+
+

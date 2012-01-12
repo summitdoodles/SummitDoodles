@@ -1,0 +1,23 @@
+<h1>Listing charge_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @charge_types.each do |charge_type| %>
+  <tr>
+    <td><%= charge_type.name %></td>
+    <td><%= link_to 'Show', charge_type %></td>
+    <td><%= link_to 'Edit', edit_charge_type_path(charge_type) %></td>
+    <td><%= link_to 'Destroy', charge_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Charge type', new_charge_type_path %>
