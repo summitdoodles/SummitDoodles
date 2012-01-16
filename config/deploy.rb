@@ -6,7 +6,7 @@ ssh_options[:forward_agent] = true
 
 set :application, "SummitDoodles.com"
 set :repository,  "git@github.com:summitdoodles/SummitDoodles.git"
-
+set :deploy_to, "/home/summitdoodles/rails_apps/dev"
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
@@ -17,12 +17,12 @@ role :db,  "www.summitdoodles.com"
 
 
 task :development do
-    set :deploy_to, "/home/summitdoodle/rails_apps/dev"
+    set :deploy_to, "/home/summitdoodles/rails_apps/dev"
     set :rails_env,'development'
 end
 
 task :production do
-    set :deploy_to, "/home/summitdoodle/rails_apps/prod"
+    set :deploy_to, "/home/summitdoodles/rails_apps/prod"
     set :rails_env, 'production'
 end
 
