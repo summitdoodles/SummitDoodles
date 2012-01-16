@@ -4,18 +4,37 @@ source 'http://rubygems.org'
 
 gem 'rails' #, '3.0.9'
 
-group :production do
-  gem 'mysql2'
-end
+#group :production do
+#  gem 'mysql2'
+#end
 
-gem "ruport"
-gem "acts_as_reportable"
+#gem "ruport"
+#gem "acts_as_reportable"
 #gem "ruport-util"
 
-gem "dynamic_form"
-gem 'ruby-units'
+#gem "dynamic_form"
+#gem 'ruby-units'
 
-gem "authlogic"
+#gem "authlogic"
+
+# -----------------------------------------------------------------
+#   SummitDoodles.com apps gems reqs.
+# -----------------------------------------------------------------
+gem 'polyglot' ,'0.3.1'
+gem 'treetop' ,'1.4.9'
+gem 'color' ,'1.4.1'
+gem 'hoe' ,'2.12.3'
+gem 'pdf-writer' ,'1.1.8'
+gem 'ruport','1.6.3'
+gem 'acts_as_reportable' ,'1.1.1'
+gem 'annotate' ,'2.4.0'
+gem 'authlogic' ,'3.0.3'
+gem 'dynamic' ,'1.1.4'
+gem 'mysql2' ,'0.3.7'
+gem 'ruby-units' '1.3.1'
+gem 'sqlite' ,'1.3.3'
+gem 'capistrano'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -40,8 +59,8 @@ gem "authlogic"
 #   gem 'webrat'
 # end
 
-group :development do  
+#group :development do
   # bundle exec annotate --position before
-  gem 'annotate', '2.4.0' 
-  gem 'sqlite3'
-end
+#  gem 'annotate', '2.4.0'
+#  gem 'sqlite3'
+#end
