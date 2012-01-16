@@ -51,3 +51,5 @@ config/database.yml
 todo.txt
 deploymentNotes.txt
 db/notes.txt
+gitNotes.txt
+notes.txt

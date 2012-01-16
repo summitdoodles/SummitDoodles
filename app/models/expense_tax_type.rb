@@ -10,6 +10,7 @@
 
 class ExpenseTaxType < ActiveRecord::Base
 	attr_accessible :name
+  acts_as_reportable
 
   has_many :expense_types
 

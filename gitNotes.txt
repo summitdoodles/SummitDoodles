@@ -2,6 +2,7 @@ http://gitref.org/basic/
 http://help.github.com/
 
 Everything done in 'Git Bash'
+Change dir to rails project
 
 --commit
 git add .

@@ -6,27 +6,25 @@ class ReportsController < ApplicationController
     
   	#choises for group by filter
     @group_filter_choices =  [["Litter","Litter"],
-                        ["Expense Type","Expense Type"],
-                        ["Name","Name"]                 
-                        ]
-    
-                        
-                        
+                              ["Expense Type","Expense Type"],
+                              ["Name","Name"],
+                              ["Tax Type","Tax Type"]
+                             ]
+
     this_year = Date.today.year.to_s
     last_year = 1.year.ago.year.to_s
     two_years_ago = 2.years.ago.year.to_s  
-    
-                  
+
     @date_filter_choices =  [["All","all"],
 	                         [this_year,"this_year"],
 	                         [last_year,"last_year"],
 	                         [two_years_ago,"two_years_ago"]                 
 	                         ]
     
-	year_filter = params[:expense_report_year_filter_selection]
+	  year_filter = params[:expense_report_year_filter_selection]
 	
-	start_date = ""
-	end_date = ""
+	  start_date = ""
+	  end_date = ""
 	
   	if year_filter.eql?("all")
   		end_date = this_year+"-12-31"
@@ -41,24 +39,39 @@ class ReportsController < ApplicationController
     	end_date = two_years_ago+"-12-31"
   		start_date = two_years_ago+"-01-01"
   	end
-	             
+
+    #build include clause
+    if(params[:expense_report_group_filter_selection].eql? "Tax Type")
+      include_hash = {:expense_type=>{:include=>{:expense_tax_type=>{:only=>[:name]}},:only=>{}},
+                      :litter=>{:only=>[:birthday]}
+                     }
+    else
+      include_hash = {:expense_type=>{:only=>[:name]},
+                      :litter=>{:only=>[:birthday]}
+                     }
+    end
+
   	table = Expense.report_table(:all,
   							 :conditions => ['date >= ? and date <= ?',start_date, end_date],
                              :only=>["date","name","amount"],
-                             :include => {:expense_type=>{:only=>[:name]},
-                                          :litter=>{:only=>[:birthday]}},
+                             :include => include_hash,
                              :order=>"date DESC" 
                             )
 
     if(table.blank?)
       @report_htm="No Results"
     else
-
       table.rename_column("date", "Date")
-      table.rename_column("expense_type.name", "Expense Type")
       table.rename_column("name", "Name")
-      table.rename_column("litter.birthday", "Litter")
       table.rename_column("amount", "Amount")
+
+      table.rename_column("litter.birthday", "Litter")
+
+      if(params[:expense_report_group_filter_selection].eql? "Tax Type")
+        table.rename_column("expense_tax_type.name", "Tax Type")
+      else
+        table.rename_column("expense_type.name", "Expense Type")
+      end
 
       grouping = Grouping(table, :by => params[:expense_report_group_filter_selection] )
 
@@ -67,15 +80,15 @@ class ReportsController < ApplicationController
         @report_htm = @report_htm + subHTM(group.to_html) +
                                     "Amount total->"+number_to_currency(group.sum("Amount"))+
                                     "<br><br><br>"
-    end
-	end
+      end
+	  end
   
 
     respond_to do |format|
       format.html # index.html.erb
     end
   end
-	
+
   private 
   
   #add a class to the HTM and other subs
