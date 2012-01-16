@@ -1,7 +1,7 @@
 set :user, "summitdoodles"
 
 set :ssh_options, {:forward_agent => true}
-set :use_sudo, true
+set :use_sudo, false
 ssh_options[:forward_agent] = true
 
 set :application, "SummitDoodles.com"
