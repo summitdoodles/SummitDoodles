@@ -11,6 +11,7 @@ SummitDoodles::Application.routes.draw do
 
   resources :charge_types
 
+  #this is a comment
   resources :expenses
 
   resources :expense_types
