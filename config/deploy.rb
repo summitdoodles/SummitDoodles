@@ -41,9 +41,13 @@ namespace :deploy do
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
+
+   task :rake_migration do
+    run "cd #{current_path}; rake db:migrate"
+   end
 end
 
-after 'deploy','deploy:symlink_shared'
+after 'deploy','deploy:symlink_shared', 'deploy:rake_migration'
 #after 'deploy:production','deploy:symlink_shared'
 
 # if you're still using the script/reaper helper you will need
