@@ -32,7 +32,8 @@ gem 'authlogic' ,'3.0.3'
 gem 'dynamic' ,'1.1.4'
 gem 'mysql2' ,'0.3.7'
 gem 'ruby-units' '1.3.1'
-gem 'sqlite' ,'1.3.3'
+#Do not use sqlite on remote server
+#gem 'sqlite' ,'1.3.3'
 gem 'capistrano'
 
 
